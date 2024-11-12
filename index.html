@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Check Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-item">Wallet Balance</div>
+    <div class="header-item">Credit Score Check</div>
+    <div class="header-item">Credit Report</div>
+    <div class="header-item">User Profile</div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Credit Score Check</a></li>
+          <li><a href="#">Credit Report</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content">
+      <!-- Credit Check Details Section -->
+      <section class="credit-details">
+        <h2>Credit Check Details</h2>
+        <p>View and analyze your credit information below.</p>
+      </section>
+
+      <!-- Credit Data and Pie Charts Section -->
+      <section class="credit-charts">
+        <div class="chart">
+          <h3>Credit Data Chart</h3>
+          <canvas id="creditDataChart"></canvas>
+        </div>
+        <div class="pie-chart">
+          <h3>Credit Score Distribution</h3>
+          <canvas id="creditCheckPieChart"></canvas>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Credit Check Dashboard</p>
+  </footer>
+
+  <!-- JavaScript for Charts -->
+  <script src="js/scripts.js"></script>
+</body>
+</html>
