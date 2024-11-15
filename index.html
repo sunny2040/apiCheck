@@ -1,63 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Credit Check Dashboard</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="header-item">Wallet Balance</div>
-    <div class="header-item">Credit Score Check</div>
-    <div class="header-item">Credit Report</div>
-    <div class="header-item">User Profile</div>
-  </header>
-
-  <!-- Main Container -->
-  <div class="main-container">
     <!-- Sidebar -->
-    <aside class="sidebar">
-      <nav>
+    <div class="sidebar">
+        <div class="sidebar-header">Admin Dashboard</div>
         <ul>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Credit Score Check</a></li>
-          <li><a href="#">Credit Report</a></li>
-          <li><a href="#">Contact</a></li>
+            <li>Dashboard</li>
+            <li>Manage Users</li>
+            <li>Check Credit Score</li>
+            <li>Credit Score Report</li>
+            <li>Wallet History</li>
+            <li>Fund Request</li>
+            <li>Settings</li>
+            <li class="ip-address">IP Address: 192.168.0.3</li>
         </ul>
-      </nav>
-    </aside>
+    </div>
 
-    <!-- Main Content Area -->
-    <main class="content">
-      <!-- Credit Check Details Section -->
-      <section class="credit-details">
-        <h2>Credit Check Details</h2>
-        <p>View and analyze your credit information below.</p>
-      </section>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header>
+            <div class="welcome-text">
+                <h2>Welcome, Sunny</h2>
+            </div>
+            <div class="header-actions">
+                <div class="wallet-balance">
+                    <span>Wallet Balance: ₹10,000</span>
+                </div>
+                <div class="quick-actions">
+                    <button class="action-btn" title="Check Credit Score">
+                        <i class="fas fa-chart-line"></i> Check Credit Score
+                    </button>
+                    <button class="action-btn" title="Credit Score Report">
+                        <i class="fas fa-file-alt"></i> Credit Score Report
+                    </button>
+                    <button class="action-btn" title="Fund Request">
+                        <i class="fas fa-money-bill-wave"></i> Fund Request
+                    </button>
+                </div>
+                <div class="logout">
+                    <span>Home</span> | <span>Logout</span>
+                </div>
+            </div>
+        </header>
 
-      <!-- Credit Data and Pie Charts Section -->
-      <section class="credit-charts">
-        <div class="chart">
-          <h3>Credit Data Chart</h3>
-          <canvas id="creditDataChart"></canvas>
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <h2>Overview</h2>
+            <div class="charts-container">
+                <!-- Credit Utilization Pie Chart -->
+                <div class="chart-box">
+                    <canvas id="creditUtilizationPieChart"></canvas>
+                    <p>Credit Utilization</p>
+                </div>
+
+                <!-- Debt-to-Income Ratio Doughnut Chart -->
+                <div class="chart-box">
+                    <canvas id="debtIncomeDoughnutChart"></canvas>
+                    <p>Debt-to-Income Ratio</p>
+                </div>
+
+                <!-- Payment History Line Chart -->
+                <div class="chart-box">
+                    <canvas id="paymentHistoryLineChart"></canvas>
+                    <p>Payment History (Monthly)</p>
+                </div>
+
+                <!-- User Age Distribution Bar Chart -->
+                <div class="chart-box">
+                    <canvas id="userAgeDistributionBarChart"></canvas>
+                    <p>User Distribution by Age</p>
+                </div>
+
+                <!-- Credit Score Levels Pie Chart -->
+                <div class="chart-box">
+                    <canvas id="creditScoreLevelsPieChart"></canvas>
+                    <p>Credit Score Levels</p>
+                </div>
+
+                <!-- User Growth Bar Chart -->
+                <div class="chart-box">
+                    <canvas id="userGrowthBarChart"></canvas>
+                    <p>User Growth (Last 6 Months)</p>
+                </div>
+            </div>
         </div>
-        <div class="pie-chart">
-          <h3>Credit Score Distribution</h3>
-          <canvas id="creditCheckPieChart"></canvas>
-        </div>
-      </section>
-    </main>
-  </div>
+    </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 Credit Check Dashboard</p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dashboard. All rights reserved.</p>
+    </footer>
 
-  <!-- JavaScript for Charts -->
-  <script src="js/scripts.js"></script>
+    <!-- Scripts -->
+    <script src="js/scripts.js"></script>
+    <script>
+        // Credit Utilization Pie Chart
+        const creditUtilizationPieChart = new Chart(document.getElementById('creditUtilizationPieChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Utilized', 'Available'],
+                datasets: [{
+                    label: 'Credit Utilization',
+                    data: [70, 30], // Example data
+                    backgroundColor: ['#3498db', '#2ecc71']
+                }]
+            }
+        });
+
+        // Debt-to-Income Ratio Doughnut Chart
+        const debtIncomeDoughnutChart = new Chart(document.getElementById('debtIncomeDoughnutChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Debt', 'Income'],
+                datasets: [{
+                    label: 'Debt-to-Income Ratio',
+                    data: [40, 60], // Example data
+                    backgroundColor: ['#e74c3c', '#f39c12']
+                }]
+            }
+        });
+
+        // Payment History Line Chart
+        const paymentHistoryLineChart = new Chart(document.getElementById('paymentHistoryLineChart'), {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Payment History',
+                    data: [500, 700, 300, 600, 800], // Example data
+                    borderColor: '#2980b9',
+                    fill: false
+                }]
+            }
+        });
+
+        // User Age Distribution Bar Chart
+        const userAgeDistributionBarChart = new Chart(document.getElementById('userAgeDistributionBarChart'), {
+            type: 'bar',
+            data: {
+                labels: ['18-25', '26-35', '36-45', '46-60', '60+'],
+                datasets: [{
+                    label: 'Age Distribution',
+                    data: [25, 40, 35, 20, 10], // Example data
+                    backgroundColor: '#9b59b6'
+                }]
+            }
+        });
+
+        // Credit Score Levels Pie Chart
+        const creditScoreLevelsPieChart = new Chart(document.getElementById('creditScoreLevelsPieChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Excellent', 'Good', 'Fair', 'Poor'],
+                datasets: [{
+                    label: 'Credit Score Levels',
+                    data: [20, 40, 30, 10], // Example data
+                    backgroundColor: ['#2ecc71', '#f39c12', '#e67e22', '#c0392b']
+                }]
+            }
+        });
+
+        // User Growth Bar Chart
+        const userGrowthBarChart = new Chart(document.getElementById('userGrowthBarChart'), {
+            type: 'bar',
+            data: {
+                labels: ['July', 'August', 'September', 'October', 'November'],
+                datasets: [{
+                    label: 'User Growth (Last 6 Months)',
+                    data: [50, 70, 90, 110, 150], // Example data
+                    backgroundColor: '#3498db'
+                }]
+            }
+        });
+    </script>
 </body>
 </html>
